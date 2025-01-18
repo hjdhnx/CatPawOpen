@@ -1,6 +1,6 @@
 export default {
     drpyS: {
-        config_url: 'http://aqtm.leertai.top:5757/config/1?pwd=qtm5869103',
+        config_url: 'http://127.0.0.1:5757/config/1?sub=all&pwd=',
     },
     ffm3u8: {
         url: 'https://cj.ffzyapi.com/api.php/provide/vod/',
