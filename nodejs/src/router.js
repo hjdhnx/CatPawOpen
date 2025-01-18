@@ -4,10 +4,10 @@ import alist from './spider/pan/alist.js';
 import _13bqg from './spider/book/13bqg.js';
 import copymanga from './spider/book/copymanga.js';
 import ffm3u8 from './spider/video/ffm3u8.js';
-import drpyS from './spider/video/drpyS.js';
-import {request} from "./util/request.js";
+import drpyS from './spider/video/drpyS.js';   // 新添加用于支持DS源适配猫影视
+import {request} from "./util/request.js";     // 新添加用于支持DS源适配猫影视
 
-const spiders = [ffm3u8, push, alist, _13bqg, copymanga, drpyS];
+const spiders = [ffm3u8, push, alist, _13bqg, copymanga, drpyS];    // 新添加drpyS用于支持DS源适配猫影视
 const spiderPrefix = '/spider';
 
 /**
@@ -20,7 +20,7 @@ export default async function router(fastify) {
     // register all spider router
     spiders.forEach((spider) => {
         const path = spiderPrefix + '/' + spider.meta.key + '/' + spider.meta.type;
-        fastify.register(spider.api, {prefix: path});
+        fastify.register(spider.api, {prefix: path});    // 新添加用于支持DS源适配猫影视
         console.log('Register spider: ' + path);
     });
     // console.log(cfg.default);
@@ -51,7 +51,7 @@ export default async function router(fastify) {
                  * @param {import('fastify').FastifyReply} reply
                  */
                 async function (_request, reply) {
-                    reply.send({run: !fastify.stop});
+                    reply.send({run: !fastify.stop});    // 新添加用于支持DS源适配猫影视
                 }
             );
             fastify.get(
@@ -84,7 +84,7 @@ export default async function router(fastify) {
                         let meta = Object.assign({}, spider.meta);
                         meta.api = spiderPrefix + '/' + meta.key + '/' + meta.type;
                         meta.key = 'nodejs_' + meta.key;
-                        meta.ext = '';
+                        meta.ext = '';    // 新添加用于支持DS源适配猫影视
                         const stype = spider.meta.type;
                         if (stype < 10) {
                             config.video.sites.push(meta);
@@ -98,7 +98,7 @@ export default async function router(fastify) {
                             config.pan.sites.push(meta);
                         }
                     });
-
+                    // 下面代码 新添加用于支持DS源适配猫影视
                     console.log(cfg.default);
                     if (cfg.default.drpyS && cfg.default.drpyS.config_url) {
                         let drpyS_config_url = cfg.default.drpyS.config_url;
@@ -122,7 +122,7 @@ export default async function router(fastify) {
                             }
                         }
                     }
-
+                    // 上面代码 新添加用于支持DS源适配猫影视
                     console.log(JSON.stringify(config));
                     reply.send(config);
                 }
