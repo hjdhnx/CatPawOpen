@@ -1,18 +1,18 @@
 import { createServer } from 'http';
-import os from 'os';
-import { start } from './index.js';
-import * as config from './index.config.js';
+import os from 'os';                       // 新添加用于支持DS源适配猫影视
+import { start } from './index.js';        // 新添加用于支持DS源适配猫影视
+import * as config from './index.config.js';        // 新添加用于支持DS源适配猫影视
 
 globalThis.catServerFactory = (handle) => {
     let port = 0;
     const server = createServer((req, res) => {
         handle(req, res);
     });
-
+//下面新添加用于支持DS源适配猫影视
     server.on('listening', () => {
         port = server.address().port;
 
-        // Get local IP addresses
+        // 获取本地IP地址
         const networkInterfaces = os.networkInterfaces();
         const addresses = [];
         for (const interfaceName in networkInterfaces) {
@@ -30,9 +30,9 @@ globalThis.catServerFactory = (handle) => {
         }
         console.log(`- Node.js version: ${process.version}`);
     });
-
+//上面新添加用于支持DS源适配猫影视
     server.on('close', () => {
-        console.log('Server closed on port ' + port);
+        console.log('Server closed on port ' + port);    //上面新添加用于支持DS源适配猫影视
     });
 
     return server;
