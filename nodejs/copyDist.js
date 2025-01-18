@@ -38,14 +38,14 @@ const copyFiles = (srcDir, destDir) => {
         const destPath = path.join(destDir, entry.name);
 
         if (entry.isDirectory()) {
-            // Create directory if it doesn't exist
+            // 如果目录不存在，则创建该目录
             if (!fs.existsSync(destPath)) {
                 fs.mkdirSync(destPath);
             }
-            // Recursively copy files
+            //递归复制文件
             copyFiles(srcPath, destPath);
         } else {
-            // Copy file and overwrite if exists
+            // 复制文件并覆盖（如果存在）
             fs.copyFileSync(srcPath, destPath);
             console.log(`Copied: ${srcPath} -> ${destPath}`);
         }
