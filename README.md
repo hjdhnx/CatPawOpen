@@ -43,6 +43,14 @@ yarn build
 
 # 更新记录
 
+### 20250224
+
+1.alist更新如下:  
+增加账号密码登录  
+sort赋值为true时强制按名称排序  
+去除login部分,login赋值{} ,  
+login.username赋值""或"guest"（不区分大小写）都可表示游客登录  
+
 ### 20250123
 
 1. alist支持带密码目录
