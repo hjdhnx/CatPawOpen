@@ -23,7 +23,8 @@ function getSiteUrl(skeyHash) {
     const site = sitesCache.get(skeyHash);
     let url = site.api;
     if (site.extend) {
-        url = mergeQuery(url, {extend: site.extend});
+        const extStr = (Array.isArray(site.extend) || typeof site.extend == 'object') ? JSON.stringify(site.extend) : site.extend;
+        url = mergeQuery(url, {extend: extStr});
     }
     return url
 }

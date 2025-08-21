@@ -17,8 +17,11 @@ yarn build
 # 调试教程
 
 * windows平台自定义字体支持（flutter windows平台字体渲染效果不好 换个字体有所改善），ttf文件放入data\flutter_assets\fonts\ttf目录即可
-* 新增运行时调试支持，基于Node.js Debugging，方便爬虫编写打包后在App内运行时定位问题，支持sourceMap加载。 sourceMap输出请参考 esbuild 打包脚本。
-* 调试工作流程 app内开启调试模式 -> 重启app -> 使用chrome等调试器关联进程（参考上面的nodejs官方文档） -> 发现问题 修改源码 打包js -> 应用内重载 -> 继续调试
+* 新增运行时调试支持，基于Node.js Debugging，方便爬虫编写打包后在App内运行时定位问题，支持sourceMap加载。 sourceMap输出请参考
+  esbuild 打包脚本。
+* 调试工作流程 app内开启调试模式 -> 重启app -> 使用chrome等调试器关联进程（参考上面的nodejs官方文档） -> 发现问题 修改源码
+  打包js -> 应用内重载 -> 继续调试
+* 复制文件到ds的 `data/cat` 目录。注意全局替换代码文本里含有的真实链接为 `$config_url` ，主页源链接为 `$host`
 
 # 参考资料
 
@@ -43,13 +46,18 @@ yarn build
 
 # 更新记录
 
+### 20250821
+
+1. 支持 t4源ext扩展放object，适配ds的hipy源
+2. 增加 $host变量
+
 ### 20250224
 
 1.alist更新如下:  
 增加账号密码登录  
 sort赋值为true时强制按名称排序  
 去除login部分,login赋值{} ,  
-login.username赋值""或"guest"（不区分大小写）都可表示游客登录  
+login.username赋值""或"guest"（不区分大小写）都可表示游客登录
 
 ### 20250123
 

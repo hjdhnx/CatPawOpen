@@ -78,12 +78,14 @@ export default async function router(fastify) {
                         meta.key = skey === 'push_agent' ? 'push' : skey;
                         meta.name = site.name;
                         meta.api = spiderPrefix + '/' + 'drpyS' + '/' + meta.type + '/' + meta.key;
-                        meta.ext = {api: site.api, extend: site.ext};
+                        // const extend = (Array.isArray(site.ext) || typeof site.ext == 'object') ? JSON.stringify(site.ext) : site.ext;
+                        const extend = site.ext;
+                        meta.ext = {api: site.api, extend: extend};
                         return meta;
                     });
 
                     dsParses = drpyS_data.parses;
-
+                    // console.log(dsSites);
 
                     dsSites.forEach((site) => {
                         const path = site.api;
