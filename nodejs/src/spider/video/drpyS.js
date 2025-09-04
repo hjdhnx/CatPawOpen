@@ -299,7 +299,7 @@ async function play(_inReq, _outResp) {
         }
         result = images
     } else { //影视类执行解析、免嗅、嗅探逻辑
-        if (result && result.jx && result.url) {
+        if (result && Number(result.jx) && result.url) {
             const input = result.url;
             // console.log(DsCache.parses);
             // 筛选出json解析
@@ -365,7 +365,7 @@ async function play(_inReq, _outResp) {
                 // header: headers
             }
 
-        } else if (result && result.parse && result.url) {
+        } else if (result && Number(result.parse) && result.url) {
             const input = result.url;
             if (input && input.startsWith('http')) { // lazy返回结果是url http开头才走嗅探和免嗅逻辑
                 const sniffer_rule = cfg.default.drpyS.sniffer_rule || 'http((?!http).){12,}?\\.m3u8(?!\\?)';
